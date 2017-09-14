@@ -1,0 +1,52 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: "宋体";
+	font-size: 12px;
+}
+img{
+	border: none;
+}
+li{
+	list-style: none;
+}
+input,select,textarea{
+	outline: none;
+	border: 0;
+}
+textarea{
+	resize: none;
+}
+a{
+	color: #000;
+	text-decoration: none;
+}
+.clearfix:after{
+	content: ".";
+	height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+}
+.clearfix{
+	zoom: 1;
+}
+
+textarea {
+-moz-box-shadow:1px 1px 0 #E7E7E7;
+-moz-box-sizing:border-box;
+border-color:#CCCCCC #999999 #999999 #CCCCCC;
+border-style:solid;
+border-width:1px;
+font-family:arial,sans-serif;
+font-size:13px;
+height:160px;
+margin:10px auto;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+padding:2px;
+width:100%;
+}

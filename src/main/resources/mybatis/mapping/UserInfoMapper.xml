@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dayuanit.ape.dao.UserInfoMapper">
+
+	<resultMap id="userInfoResultMap" type="userInfo">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id"/>
+		<result property="oneWord" column="one_word"/>
+		<result property="aboutMe" column="about_me"/>
+		<result property="skillDesc" column="skill_desc"/>
+		<result property="expressDesc" column="express_desc"/>
+	</resultMap>
+	
+	<insert id="insertUserInfo" parameterType="userInfo" useGeneratedKeys="true" keyProperty="id">
+		insert into ape_user_info(user_id, one_word, about_me, skill_desc, express_desc) 
+		values(#{userId},#{oneWord},#{aboutMe},#{skillDesc},#{expressDesc});
+	</insert>
+	
+	<select id="getUserInfo" parameterType="Integer" resultMap="userInfoResultMap">
+	     select user_id, one_word, about_me, skill_desc, express_desc from ape_user_info where
+	     user_id = #{userId}; 
+	</select>
+	
+	<update id="updateAboutMe">
+	     update ape_user_info set about_me = #{aboutMe} where user_id = #{userId};
+	</update>
+	
+	<update id="updateSkillDesc">
+	     update ape_user_info set skill_desc = #{skillDesc} where user_id = #{userId};
+	</update>
+	
+	<update id="modifyOneWordByUserId" parameterType="HashMap">
+		update ape_user_info set one_word=#{oneWord} where user_id=#{userId};
+	</update>
+</mapper>

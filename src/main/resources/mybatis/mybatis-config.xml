@@ -1,0 +1,17 @@
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.dayuanit.ape.domain.User" alias="user"/>
+		<typeAlias type="com.dayuanit.ape.domain.UserBook" alias="userBook" />
+		<typeAlias type="com.dayuanit.ape.domain.UserCompany" alias="userCompany"/>
+		<typeAlias type="com.dayuanit.ape.domain.UserInfo" alias="userInfo" />
+		<typeAlias type="com.dayuanit.ape.domain.UserCode" alias="userCode"/>
+		<typeAlias type="com.dayuanit.ape.domain.InviteCode" alias="inviteCode" />
+		<typeAlias type="com.dayuanit.ape.domain.WXAccount" alias="wxAccount" />
+		<typeAlias type="com.dayuanit.ape.domain.WXAccountInfo" alias="wxAccountInfo" />
+	</typeAliases>
+	
+</configuration>

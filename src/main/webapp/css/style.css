@@ -1,0 +1,129 @@
+.wrap{
+	width: 460px;
+	margin: 0 auto;
+}
+
+#head{
+	height: 84px;
+	background: #1d7ad9;
+}
+.logo{
+	padding-top: 13px;
+	padding-left: 30px;
+	float: left;
+}
+#head h3{
+	font-size: 22px;
+	font-family: "Micsoft YaHei","微软雅黑";
+	font-weight: normal;
+	color: #fff;
+	float: left;
+	padding-top: 35px;
+	padding-left: 20px;
+}
+/*注册表单*/
+.register{
+	width: 630px;
+	border: 1px solid #e8e8e8;
+	padding: 70px 0 55px;
+	margin: 10px auto 0;
+}
+
+.register_noborder{
+	width: 630px;
+	padding: 70px 0 55px;
+	margin: 10px auto 0;
+}
+
+.user_infox{
+	margin-bottom: 30px;
+	width: 250px;
+}
+
+.user_info{
+	margin-bottom: 30px;
+}
+.user_info span{
+	display: inline-block;
+	width: 190px;
+	color: #999;
+	font-size: 14px;
+	line-height: 38px;
+	text-align: right;
+	padding-right: 20px;
+}
+.user_info b{
+	font-weight: normal;
+	color: #ff0000;
+}
+.user_info input{
+	width: 230px;
+	height: 36px;
+	line-height: 36px\9;
+	border: 1px solid #ccc;
+	padding: 0 30px 0 8px;
+}
+.login_name{
+	background: url(../images/login_name.png) 96% center no-repeat;
+}
+.login_password{
+	background: url(../images/user_password.png) 96% center no-repeat;
+}
+.agree{
+	padding-left: 202px;
+}
+.agree input,.agree label,.agree a{
+	vertical-align: middle;
+}
+.agree input{
+	margin-right: 2px;
+}
+.agree label{
+	color: #333;
+}
+.agree a{
+	color: #005aa0;
+}
+.submit{
+	padding-top: 35px;
+	padding-left: 198px;
+}
+.submit_btn{
+	width: 272px;
+	height: 36px;
+	color: #606060;
+	font-size: 16px;
+	background: url(../images/submit_btn.png) left top repeat-x;
+	cursor: pointer;
+}
+
+/*footer*/
+#footer{
+	background: #d4d4d4;
+	text-align: center;
+	padding: 50px 0;
+	margin-top: 40px;
+}
+#footer p{
+	line-height: 24px;
+}
+.credit_rating{
+	padding-top: 24px;
+}
+.credit_rating a{
+	padding: 0 12px;
+}
+
+textarea {
+        position: relative;
+        border: 1px solid #D4D4D4;
+        vertical-align: middle;
+        display: inline-block;
+        white-space: pre-wrap;
+        margin: 0;
+        padding: 0;
+        -moz-border-radius: 5px 5px 5px 5px;
+        -webkit-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+        font-size:13px;
+    }

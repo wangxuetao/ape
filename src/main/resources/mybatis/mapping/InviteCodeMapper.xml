@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dayuanit.ape.dao.InviteCodeMapper">
+		
+	<resultMap id="inviteCodeResultMap" type="inviteCode">
+		<id property="id" column="id"/>
+		<result property="status" column="status"/>
+		<result property="code" column="code"/>
+		<result property="createTime" column="create_time"/>
+		<result property="endTime" column="end_time"/>
+	</resultMap>
+	
+	<resultMap id="userCodeResultMap" type="userCode">
+		<id property="id" column="id"/>
+		<result property="userId" column="user_id"/>
+		<result property="inviteId" column="invite_id"/>
+	</resultMap>
+	
+	<insert id="addUserCode" parameterType="userCode" useGeneratedKeys="true" keyProperty="id">
+		insert into ape_user_code (user_id,invite_id) values(#{userId},#{inviteId});
+	</insert>
+	
+	<insert id="addInviteCode" parameterType="inviteCode" useGeneratedKeys="true" keyProperty="id">
+	insert into ape_invite_code(status, code, create_time, end_time) 
+		values(#{status},#{code},now(),#{endTime});
+	</insert>
+	
+	<select id="queryCode" parameterType="HashMap" resultMap="inviteCodeResultMap">
+	select status, code, create_time, end_time from ape_invite_code 
+	<where>
+	<if test="code!=null">
+	 		code=#{code};
+	 </if>
+	</where>
+	</select>
+	
+	<select id="queryAllCode"  resultMap="inviteCodeResultMap">
+		select * from ape_invite_code;
+	</select>
+	
+	<update id="modifyCode" parameterType="HashMap">
+	 update ape_invite_code set status = 1 where code =#{code};
+	</update>
+	
+	<update id="timeOutCode" parameterType="HashMap">
+	 update ape_invite_code set status = 2 where code =#{code};
+	</update>
+	
+	<select id="queryInviteId" parameterType="HashMap" resultMap="userCodeResultMap">
+ 	select * from ape_user_code where user_id=#{userId};
+	</select>
+	
+	<select id="queryInviteCode" parameterType="HashMap" resultMap="inviteCodeResultMap">
+		select * from ape_invite_code where id=#{inviteId};
+	</select>
+	<delete id="deleteCode" parameterType="HashMap">
+	delete from ape_invite_code where id=#{codeId};
+	</delete>
+</mapper>

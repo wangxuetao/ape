@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dayuanit.ape.dao.UserCompanyMapper">
+
+	<resultMap id="userCompanyResultMap" type="userCompany">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id"/>
+		<result property="companyName" column="company_name"/>
+		<result property="position" column="position"/>
+		<result property="postDesc" column="post_desc"/>
+		<result property="startTime" column="start_time"/>
+		<result property="endTime" column="end_time"/>
+	</resultMap>
+	
+	<insert id="addUserCompany" parameterType="userCompany" useGeneratedKeys="true" keyProperty="id">
+         insert into ape_user_company (user_id, company_name, position, post_desc, start_time, end_time)
+         values(#{userId}, #{companyName}, #{position}, #{postDesc}, #{startTime}, #{endTime});
+	</insert>
+	
+	<select id="listUserCompany" parameterType="Integer" resultMap="userCompanyResultMap">
+	     select id, user_id, company_name, position, post_desc, start_time, end_time from ape_user_company where
+	     user_id = #{userId}; 
+	</select>
+	
+	<select id="getCompanyByName" parameterType="String" resultMap="userCompanyResultMap">
+	     select id, user_id, company_name, position, post_desc, start_time, end_time from ape_user_company where
+	     company_name = #{companyName}; 
+	</select>
+	
+	<update id="updateCompanyById" parameterType="userCompany">
+	     update ape_user_company set company_name = #{companyName}, position = #{position}, post_desc = #{postDesc}, start_time = #{startTime},
+	     end_time=#{endTime} where id=#{id} and user_id=#{userId};
+	</update>
+	
+	<delete id="removeCompany" parameterType="HashMap">
+		delete from ape_user_company where id=#{id} and user_id=#{userId};
+	</delete>
+	
+	<select id="getCompanyById" parameterType="Integer" resultMap="userCompanyResultMap">
+	     select id, user_id, company_name, position, post_desc, start_time, end_time from ape_user_company where 
+	     id=#{companyId};
+	</select>
+	
+</mapper>

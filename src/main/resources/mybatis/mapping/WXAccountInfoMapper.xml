@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dayuanit.ape.dao.WXAccountInfoMapper">
+
+	<resultMap id="wxAccountInfoResultMap" type="wxAccountInfo">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id"/>
+		<result property="city" column="city"/>
+		<result property="country" column="country"/>
+		<result property="headImgUrl" column="head_img_url"/>
+		<result property="nickName" column="nick_name"/>
+		<result property="openId" column="open_id"/>
+		<result property="privilege" column="privilege"/>
+		<result property="province" column="province"/>
+		<result property="sex" column="sex"/>
+		<result property="unionId" column="union_id"/>
+		<result property="accessToken" column="access_token"/>
+		<result property="expiresDate" column="expires_date"/>
+		<result property="refreshToken" column="refresh_token"/>
+		<result property="scope" column="scope"/>
+		<result property="createTime" column="create_time"/>
+		<result property="modifyTime" column="modify_time"/>
+	</resultMap>
+	
+	<insert id="add" parameterType="wxAccountInfo" useGeneratedKeys="true" keyProperty="id">
+		insert into ape_wx_info(user_id, city, country, head_img_url,nick_name,open_id,privilege,province,sex,union_id,access_token,expires_date,refresh_token,scope,create_time,modify_time) 
+		values(#{userId},#{city},#{country},#{headImgUrl},#{nickName},#{openId},#{privilege},
+		#{province},#{sex},#{unionId},#{accessToken},#{expiresDate},#{refreshToken},#{scope},now(),now());
+	</insert>
+	
+	<update id="update" parameterType="wxAccountInfo">
+		update ape_wx_info set access_token=#{accessToken}, 
+		expires_date=#{expiresDate}, 
+		scope=#{scope}, 
+		open_id=#{openId}, 
+		refresh_token=#{refreshToken},
+		modify_time=now()
+		where union_id=#{unionId};
+	</update>
+	
+	<sql id="wxInfoMapperSel">
+		id, user_id, city, country, head_img_url,nick_name,open_id,privilege,province,sex,union_id,access_token,expires_date,refresh_token,scope,create_time,modify_time
+	</sql>
+	
+	<select id="getInfo" resultMap="wxAccountInfoResultMap">
+		select <include refid="wxInfoMapperSel"></include> from ape_wx_info 
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="unionId != null">
+				and union_id = #{unionId}
+			</if>
+			<if test="userId != null">
+				and user_id = #{userId}
+			</if>
+		</trim>
+	</select>
+	
+</mapper>

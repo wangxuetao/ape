@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="1 minutes" ERROR="false">
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <Target>System.out</Target>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%-5level] [%logger.%M:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="rolling"
+              class="ch.qos.logback.core.FileAppender">
+        <file>/var/dy_ape.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%-5level] [%logger.%M:%L] |%msg%n</pattern>
+        </encoder>
+        <charset>UTF-8</charset>
+    </appender>
+    
+    <appender name="async_rolling" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>512</queueSize>
+        <appender-ref ref="rolling"/>
+    </appender>
+
+    <root level="info">
+    	<!-- 
+        <appender-ref ref="stdout" />
+         -->
+        <appender-ref ref="async_rolling"/>
+    </root>
+	
+	<logger name="com.dayuanit" level="info" />
+	
+    <logger name="org.apache.ibatis" level="ERROR"/>
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="ERROR"/>
+    <logger name="org.apache.commons" level="ERROR"/>
+    <logger name="catalia" level="ERROR"/>
+    <logger name="org.apache" level="ERROR"/>
+    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="ERROR"/>
+    <logger name="java.sql.ResultSet" level="ERROR"/>
+    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="ERROR"/>
+    <logger name="java.sql.Connection" level="ERROR"/>
+    <logger name="java.sql.PreparedStatement" level="ERROR"/>
+
+</configuration>
